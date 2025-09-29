@@ -21,10 +21,10 @@ calcularPromedioNotas = function(){
     mostrarTexto("lblResultado", promedioFinal);
 if(promedioFinal < 5 && promedioFinal > 0){
     mostrarTexto("lblTexto", "Reprobado");
-    mostrarImagen("imgResultado", "img/reprobado.gif");
+    mostrarImagen("imgResultado", "img/triste.gif");
 } else if(promedioFinal >= 5 && promedioFinal <= 8){
     mostrarTexto("lblTexto", "Aprobado");
-    mostrarImagen("imgResultado", "img/bueno.gif");
+    mostrarImagen("imgResultado", "img/celebrando.gif");
     
     
 } else if(promedioFinal > 8 && promedioFinal <= 10)
