@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="serviciosPlacas.js"></script>
+    <script src="placas.js"></script>
+    <script src="utilitarios.js"></script>
+    <script src="utilitariosCadenas.js"></script>
+    <link rel="stylesheet" href="placas.css">
+</head>
+<body>
+    <h1>Validador de Placas Vehiculares</h1>
+    
+    <div class="container">
+        <div class="input-section">
+            <label for="txtPlaca">Ingrese la placa:</label>
+            <input type="text" id="txtPlaca" placeholder="Ej: ABC123 o ABC1234" maxlength="7">
+            <button onclick="validarPlaca()">VALIDAR PLACA</button>
+        </div>
+        
+        <!-- Sección para mostrar resultados de validación -->
+        <div class="result-section">
+            <h3>Resultados de Validación:</h3>
+            <div id="lblResultados" class="resultado"></div>
+            
+            <!-- Nuevo componente para mostrar información de provincia -->
+            <div id="lblProvincia" class="provincia"></div>
+            
+            <!-- Label para mostrar los errores de validación -->
+            <div id="lblErrores" class="errores"></div>
+        </div>
+    </div>
+</body>
+</html>
