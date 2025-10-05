@@ -65,7 +65,21 @@ button:hover {
     margin: 10px 0;
     border-radius: 4px;
     font-weight: bold;
-    background-color: #e8f4fd;
-    border-left: 4px solid #3498db;
+    background-color: #85acff;
 }
 
+.tipoVehiculo {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: #85acff;
+}
+
+.diaPicoYPlaca {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    font-weight: bold;
+    background-color: #85acff;
+}

@@ -22,8 +22,41 @@ validarPlaca = function() {
             mostrarTexto("lblProvincia", "PROVINCIA INCORRECTA");
         }
         
+        // Invocar a obtenerTipoVehiculo y guardar el resultado en una variable
+        let tipoVehiculo = obtenerTipoVehiculo(placa);
+        
+        // Si el valor obtenido no es null, mostrar el tipo en pantalla
+        if (tipoVehiculo !== null) {
+            mostrarTexto("lblTipoVehiculo", "Tipo de vehículo: " + tipoVehiculo);
+        } else {
+            // Si es null, mostrar un mensaje tipo de vehículo incorrecto
+            mostrarTexto("lblTipoVehiculo", "TIPO DE VEHÍCULO INCORRECTO");
+        }
+        
+        // 14. Invocar a obtenerDiaPicoYPlaca y guardar el resultado en una variable
+        let diaPicoYPlaca = obtenerDiaPicoYPlaca(placa);
+        
+        // Mostrar en pantalla el día que tiene pico y placa
+        mostrarTexto("lblDiaPicoYPlaca", "Día de pico y placa: " + diaPicoYPlaca);
+        
     } else {
         // Mostrar en pantalla un mensaje ESTRUCTURA INCORRECTA y los errores
         mostrarTexto("lblResultados", "ESTRUCTURA INCORRECTA: " + erroresEstructura);
+        // Limpiar los otros campos si hay error de estructura
+        mostrarTexto("lblProvincia", "");
+        mostrarTexto("lblTipoVehiculo", "");
+        mostrarTexto("lblDiaPicoYPlaca", "");
     }
+}
+
+function limpiar() {
+    // Limpiar la caja de texto de la placa
+    mostrarTexto("txtPlaca", "");
+    
+    // Limpiar todos los labels de resultados
+    mostrarTexto("lblResultados", "");
+    mostrarTexto("lblProvincia", "");
+    mostrarTexto("lblTipoVehiculo", "");
+    mostrarTexto("lblDiaPicoYPlaca", "");
+    
 }

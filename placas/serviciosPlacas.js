@@ -47,42 +47,90 @@ validarEstructura = function(placa){
 
 
 function obtenerProvincia(placa) {
-    // Verificar que la placa tenga al menos un carácter
     if (!placa || placa.length === 0) {
         return null;
     }
     
-    // Obtener la primera letra de la placa
-    let primeraLetra = placa.charAt(0).toUpperCase();
+    function aMayuscula(letra) {
+        if (letra >= 'a' && letra <= 'z') {
+            return String.fromCharCode(letra.charCodeAt(0) - 32);
+        }
+        return letra;
+    }
     
-    // Mapeo de letras a provincias según el sistema de placas de Ecuador
-    let mapeoProvincias = {
-        'A': 'Azuay',
-        'B': 'Bolívar',
-        'U': 'Cañar',
-        'C': 'Carchi',
-        'X': 'Cotopaxi',
-        'H': 'Chimborazo',
-        'O': 'El Oro',
-        'E': 'Esmeraldas',
-        'W': 'Galápagos',
-        'G': 'Guayas',
-        'I': 'Imbabura',
-        'L': 'Loja',
-        'R': 'Los Ríos',
-        'M': 'Manabí',
-        'V': 'Morona Santiago',
-        'N': 'Napo',
-        'S': 'Pastaza',
-        'P': 'Pichincha',
-        'K': 'Sucumbíos',
-        'Q': 'Orellana',
-        'T': 'Tungurahua',
-        'Z': 'Zamora Chinchipe',
-        'Y': 'Santa Elena',
-        'J': 'Santo Domingo de los Tsáchilas'
-    };
+    let primeraLetra = aMayuscula(placa.charAt(0));
     
-    // Retornar el nombre de la provincia o null si no existe
-    return mapeoProvincias[primeraLetra] || null;
+    // Usando if con && (MUCHO MÁS LARGO Y MENOS EFICIENTE)
+    if (primeraLetra === 'A') return 'Azuay';
+    if (primeraLetra === 'B') return 'Bolívar';
+    if (primeraLetra === 'U') return 'Cañar';
+    if (primeraLetra === 'C') return 'Carchi';
+    if (primeraLetra === 'X') return 'Cotopaxi';
+    if (primeraLetra === 'H') return 'Chimborazo';
+    if (primeraLetra === 'O') return 'El Oro';
+    if (primeraLetra === 'E') return 'Esmeraldas';
+    if (primeraLetra === 'W') return 'Galápagos';
+    if (primeraLetra === 'G') return 'Guayas';
+    if (primeraLetra === 'I') return 'Imbabura';
+    if (primeraLetra === 'L') return 'Loja';
+    if (primeraLetra === 'R') return 'Los Ríos';
+    if (primeraLetra === 'M') return 'Manabí';
+    if (primeraLetra === 'V') return 'Morona Santiago';
+    if (primeraLetra === 'N') return 'Napo';
+    if (primeraLetra === 'S') return 'Pastaza';
+    if (primeraLetra === 'P') return 'Pichincha';
+    if (primeraLetra === 'K') return 'Sucumbíos';
+    if (primeraLetra === 'Q') return 'Orellana';
+    if (primeraLetra === 'T') return 'Tungurahua';
+    if (primeraLetra === 'Z') return 'Zamora Chinchipe';
+    if (primeraLetra === 'Y') return 'Santa Elena';
+    if (primeraLetra === 'J') return 'Santo Domingo de los Tsáchilas';
+    
+    return null;
+}
+
+function obtenerTipoVehiculo(placa) {
+    // Verificar que la placa tenga al menos dos caracteres
+    if (!placa || placa.length < 2) {
+        return null;
+    }
+    
+    // Obtener el segundo carácter de la placa
+    let segundoCaracter = placa.charAt(1).toUpperCase();
+    
+    // Determinar el tipo de vehículo usando if con &&
+    if (segundoCaracter >= 'A' && segundoCaracter <= 'X') {
+        return 'Comercial';
+    } else if (segundoCaracter === 'Y') {
+        return 'Particular';
+    } else if (segundoCaracter === 'Z') {
+        return 'Gubernamental';
+    } else if (segundoCaracter >= '0' && segundoCaracter <= '9') {
+        return 'Particular';
+    } else {
+        return null;
+    }
+}
+
+function obtenerDiaPicoYPlaca(placa) {
+    if (!placa || placa.length === 0) {
+        return null;
+    }
+    
+    let ultimoCaracter = placa.charAt(placa.length - 1);
+    
+    // Usando if con &&
+    if (ultimoCaracter === '1' || ultimoCaracter === '2') {
+        return 'Lunes';
+    } else if (ultimoCaracter === '3' || ultimoCaracter === '4') {
+        return 'Martes';
+    } else if (ultimoCaracter === '5' || ultimoCaracter === '6') {
+        return 'Miércoles';
+    } else if (ultimoCaracter === '7' || ultimoCaracter === '8') {
+        return 'Jueves';
+    } else if (ultimoCaracter === '9' || ultimoCaracter === '0') {
+        return 'Viernes';
+    } else {
+        return 'Libre circulación';
+    }
 }
