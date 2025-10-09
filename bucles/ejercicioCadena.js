@@ -33,3 +33,27 @@ function invertirCadena() {
     }    
     cambiarTexto("lblInvertir", resultado);  
 }
+
+buscarLetra =  function (cadena, letra){
+    let letraIterada;
+    let existeLetra=false;
+    for(let i=0; i< cadena.length; i++){
+        letraIterada = cadena.charAt(i);
+            if(letraIterada==letra){
+                    existeLetra=true;
+            }
+    }
+    if(existeLetra==true){
+        console.log("Existe");
+    }else{
+        console.log("No existe");
+    }
+}
+
+contarMayusculas = function(cadena){
+    let letra;
+    for(let i=0;i< cadena.length; i++){
+            letra=cadena.charAt(i);
+            
+    }
+}
