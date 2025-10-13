@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+    <script src="utilitarios.js" ></script>
+    <script src="ahorcado.js" ></script>
     <link rel="stylesheet" type="text/css" href="ahorcado.css">
 </head>
 
 <body>
     <div class="containerMain">
-
         <div class="containerLefth">
-            <h3>JUEGO DEL AHORACADO</h3>
+            <h3>JUEGO DEL AHORCADO</h3>
             <div>Ingresa una palabra de 5 letras</div>
-            <input type="text" id="txtSecreta" />
-            <input type="button" id="btnGuardar" value="GUARDAR"/>
+            <input type="password" id="txtSecreta" />
+            <input type="button" id="btnGuardar" value="GUARDAR" onclick="guardarPalabra()"/>
             <div>Ingresa una letra:</div>
             <input type="text" id="txtLetra">
-            <input type="button" id="btnValidar" value="VALIDAR"/>
+            <input type="button" id="btnValidar" value="VALIDAR" onclick="ingresarLetra()"/>
             <br/>
             <div>
-                <div id="div0"> </div>
-                <div id="div1"> </div>
-                <div id="div2"> </div>
-                <div id="div3"> </div>
-                <div id="div4"> </div>
+                <div id="div0">-</div>
+                <div id="div1">-</div>
+                <div id="div2">-</div>
+                <div id="div3">-</div>
+                <div id="div4">-</div>
             </div>
             <img id="ahorcadoImagen" src="">
         </div>
@@ -32,5 +33,4 @@
         </div>
     </div>
 </body>
-
 </html>
