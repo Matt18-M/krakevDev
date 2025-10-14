@@ -24,6 +24,7 @@ probarAgregar = function(){
 
 agregarNota = function(nota){
     notas.push(nota);
+    mostrarNotas();
 }
 
 //RETO 41
@@ -43,4 +44,25 @@ return promedio;
 ejecutarPromedio = function(){
     let promedioCalculado = calcularPromedio();
     mostrarTexto("lblPromedio", promedioCalculado);
+}
+
+generarTabla = function(){
+    let contenidoTabla="";
+    let cmpTabla = document.getElementById("divTabla");
+    contenidoTabla += "<table><tr><td>UNO</td></tr></table>" + "<table><tr><td>DOS</td></tr></table>";
+    cmpTabla.innerHTML=contenidoTabla;    
+}
+
+mostrarNotas = function(){
+    let cmpTabla = document.getElementById("divTabla");
+    let contenidoTabla = "<table><tr><td>NOTA</td></tr>";
+    let miNota;
+    for(let i=0;i<notas.length;i++){
+        miNota = notas[i];
+        contenidoTabla+="<tr><td>";
+        contenidoTabla+=miNota;
+        contenidoTabla+="</td></tr>";
+    }
+    contenidoTabla+="</table>";
+    cmpTabla.innerHTML=contenidoTabla;
 }
