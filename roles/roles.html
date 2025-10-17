@@ -98,127 +98,136 @@
 
 
     <div id="divRol">
-        <div class="principal">
-            <div class="area">
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
-                    <div>
-                        <input type="text" class="cajaTexto" id="txtBusquedaCedulaRol" />
-                        <div class="error" id="lblErrorBusqueda"></div>
-                    </div>
+    <div class="principal">
+        <div class="area">
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    CEDULA
                 </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtBusquedaCedulaRol" />
+                    <div class="error" id="lblErrorBusqueda"></div>
+                </div>
+            </div>
+            <div class="contenedorBoton">
+                <input type="button" value="BUSCAR" class="estiloBoton" onclick="buscarPorRol()" />
+            </div>
+        </div>
+
+        <div class="area">
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    CEDULA
+                </div>
+                <div>
+                    <div class="info" id="infoCedula"></div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    NOMBRE
+                </div>
+                <div>
+                    <div class="info" id="infoNombre"></div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    SUELDO
+                </div>
+                <div>
+                    <div class="info" id="infoSueldo"></div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    DESCUENTOS
+                </div>
+                <div>
+                    <input type="text" class="cajaTexto" id="txtDescuentos" />
+                    <div class="error" id="lblErrorDescuentos"></div>
+                </div>
+            </div>
+            <div class="botones">
                 <div class="contenedorBoton">
-                    <input type="button" value="BUSCAR" class="estiloBoton" onclick="buscarPorRol()" />
+                    <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol()" />
                 </div>
             </div>
-
-            <div class="area">
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        CEDULA
-                    </div>
-                    <div>
-                        <div class="info" id="infoCedula"></div>
-                    </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    APORTE IESS
                 </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        NOMBRE
-                    </div>
-                    <div>
-                        <div class="info" id="infoNombre"></div>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        SUELDO
-                    </div>
-                    <div>
-                        <div class="info" id="infoSueldo"></div>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        DESCUENTOS
-                    </div>
-                    <div>
-                        <input type="text" class="cajaTexto" id="txtDescuentos" />
-                        <div class="error" id="lblErrorDescuentos"></div>
-                    </div>
-                </div>
-                <div class="botones">
-                    <div class="contenedorBoton">
-                        <input type="button" value="CALCULAR" class="estiloBoton" onclick="calcularRol();"/>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE IESS
-                    </div>
-                    <div>
-                        <div class="info" id="infoIESS">0.0</div>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        TOTAL A PAGAR
-                    </div>
-                    <div>
-                        <div class="info" id="infoPago">0.0</div>
-                    </div>
-                </div>
-                <div class="botones">
-                    <div class="contenedorBoton">
-                        <input type="button" value="GUARDAR" class="estiloBoton" />
-                    </div>
+                <div>
+                    <div class="info" id="infoIESS">0.0</div>
                 </div>
             </div>
-            <div class="logoEscuela">
-                <img src="./imagenes/rol.png" width="80%" />
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    TOTAL A PAGAR
+                </div>
+                <div>
+                    <div class="info" id="infoPago">0.0</div>
+                </div>
+            </div>
+            <div class="botones">
+                <div class="contenedorBoton">
+                    <input type="button" value="GUARDAR" class="estiloBoton" id="btnGuardarRol" onclick="guardarRol()" />
+                </div>
             </div>
         </div>
-    </div>
-
-    <div id="divResumen">
-        <div class="principal">
-            <div class="area">
-            </div>
-            <div class="area">
-                <div id="tablaResumen" class="areaTabla">
-
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        TOTAL A PAGAR
-                    </div>
-                    <div>
-                        <div class="info" id="infoTotalPago">0.0</div>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPRESA
-                    </div>
-                    <div>
-                        <div class="info" id="infoAporteEmpresa">0.0</div>
-                    </div>
-                </div>
-                <div class="ingresoDatos">
-                    <div class="tituloCampo">
-                        APORTE EMPLEADO
-                    </div>
-                    <div>
-                        <div class="info" id="infoAporteEmpleado">0.0</div>
-                    </div>
-                </div>
-            </div>
-            <div class="logoEscuela">
-                <img src="./imagenes/resumen.png" width="80%" />
-            </div>
+        <div class="logoEscuela">
+            <img src="./imagenes/rol.png" width="80%" />
         </div>
     </div>
+</div>
+
+<div id="divResumen">
+    <div class="principal">
+        <div class="area">
+        </div>
+        <div class="area">
+            <div id="tablaResumen" class="areaTabla">
+
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    TOTAL A PAGAR
+                </div>
+                <div>
+                    <div class="info" id="infoTotalPago">0.0</div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    APORTE EMPRESA
+                </div>
+                <div>
+                    <div class="info" id="infoAporteEmpresa">0.0</div>
+                </div>
+            </div>
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    APORTE EMPLEADO
+                </div>
+                <div>
+                    <div class="info" id="infoAporteEmpleado">0.0</div>
+                </div>
+            </div>
+            <!-- NUEVO CAMPO PARA TOTAL NÓMINA -->
+            <div class="ingresoDatos">
+                <div class="tituloCampo">
+                    TOTAL NÓMINA
+                </div>
+                <div>
+                    <div class="info" id="infoTotalNomina">0.0</div>
+                </div>
+            </div>
+        </div>
+        <div class="logoEscuela">
+            <img src="./imagenes/resumen.png" width="80%" />
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
