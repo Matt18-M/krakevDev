@@ -224,3 +224,70 @@ validarCampos = function(cedula, nombre, apellido, sueldo) {
     
     return validacionCorrecta;
 }
+
+
+//PARTE ROL DE PAGOS
+
+buscarPorRol = function() {
+    mostrarTexto("lblErrorBusqueda", "");
+    let cedulaBusqueda = recuperarTexto("txtBusquedaCedulaRol");
+
+    if (cedulaBusqueda === "") {
+        mostrarTexto("lblErrorBusqueda", "Ingrese una cédula para buscar");
+        return;
+    }
+
+    let empleadoEncontrado = buscarEmpleado(cedulaBusqueda);
+
+    if (empleadoEncontrado === null) {
+        alert("EMPLEADO NO EXISTE");
+        mostrarTexto("infoCedula", "");
+        mostrarTexto("infoNombre", "");
+        mostrarTexto("infoSueldo", "");
+    } else {
+        mostrarTexto("infoCedula", empleadoEncontrado.cedula);
+        mostrarTexto("infoNombre", empleadoEncontrado.nombre + " " + empleadoEncontrado.apellido);
+        mostrarTexto("infoSueldo", empleadoEncontrado.sueldo.toFixed(2));
+    }
+}
+
+calcularAporteEmpleado = function(sueldo) {
+    let aporte = sueldo * 0.0945;
+    return aporte;
+}
+
+calcularValorAPagar = function(sueldo, aporte, descuento) {
+    let valorAPagar = sueldo - aporte - descuento;
+    return valorAPagar;
+}
+
+calcularRol = function() {
+    let sueldo = recuperarFloatDiv("infoSueldo");
+    let descuento = recuperarFloat("txtDescuentos");
+
+    if (isNaN(sueldo) || sueldo <= 0) {
+        alert("Debe buscar un empleado válido antes de calcular el rol");
+        return;
+    }
+
+    if (isNaN(descuento)) {
+        alert("El valor del descuento debe ser un número");
+        return;
+    }
+    if (descuento < 0) {
+        alert("El descuento debe ser mayor a 0");
+        return;
+    }
+    if (descuento > sueldo) {
+        alert("El descuento no puede ser mayor que el sueldo");
+        return;
+    }
+
+    let aporteEmpleado = calcularAporteEmpleado(sueldo);
+    mostrarTexto("infoIESS", aporteEmpleado.toFixed(2));
+
+    let valorAPagar = calcularValorAPagar(sueldo, aporteEmpleado, descuento);
+    mostrarTexto("infoPago", valorAPagar.toFixed(2));
+}
+
+
