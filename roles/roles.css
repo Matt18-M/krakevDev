@@ -186,3 +186,38 @@ tbody tr:nth-child(odd) {
     font-style: italic;
     font-size: 14px;
 }
+
+
+
+.tabla-estilo {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.tabla-estilo th {
+    background-color: #217023;
+    color: white;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.tabla-estilo td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.tabla-estilo tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.tabla-estilo tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.tabla-estilo tr:hover {
+    background-color: #e0f7e0;
+}
