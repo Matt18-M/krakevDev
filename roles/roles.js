@@ -89,7 +89,7 @@ agregarEmpleado = function(empleado){
     }
 }
 
-// Funciones de validación y acciones
+// Funciones de guardado y acciones
 guardar = function(){
     limpiarMensajesError();
     
@@ -100,22 +100,38 @@ guardar = function(){
     
     let validacionCorrecta = validarCampos(cedula, nombre, apellido, sueldo);
     
-    if (validacionCorrecta && esNuevo) {
-        let nuevoEmpleado = {
-            cedula: cedula,
-            nombre: nombre,
-            apellido: apellido,
-            sueldo: sueldo
-        };
-        
-        let resultado = agregarEmpleado(nuevoEmpleado);
-        
-        if (resultado) {
-            alert("EMPLEADO GUARDADO CORRECTAMENTE");
-            mostrarEmpleados();
-            deshabilitarCamposFormulario(); // Deshabilitar campos después de guardar exitosamente
+    if (validacionCorrecta) {
+        if (esNuevo) {
+            // Crear nuevo empleado
+            let nuevoEmpleado = {
+                cedula: cedula,
+                nombre: nombre,
+                apellido: apellido,
+                sueldo: sueldo
+            };
+            
+            let resultado = agregarEmpleado(nuevoEmpleado);
+            
+            if (resultado) {
+                alert("EMPLEADO GUARDADO CORRECTAMENTE");
+                mostrarEmpleados();
+                deshabilitarCamposFormulario();
+                esNuevo = false; 
+            } else {
+                alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + cedula);
+            }
         } else {
-            alert("YA EXISTE UN EMPLEADO CON LA CEDULA " + cedula);
+            let empleadoExistente = buscarEmpleado(cedula);
+            
+            if (empleadoExistente !== null) {
+                empleadoExistente.nombre = nombre;
+                empleadoExistente.apellido = apellido;
+                empleadoExistente.sueldo = sueldo;
+                
+                alert("EMPLEADO MODIFICADO EXITOSAMENTE");
+                mostrarEmpleados(); 
+                deshabilitarCamposFormulario(); 
+            }
         }
     }
 }
@@ -132,7 +148,38 @@ limpiar = function() {
     }
 }
 
-// Funciones auxiliares
+ejecutarBusqueda = function() {
+    mostrarTexto("lblErrorBusqueda", "");
+    
+    let cedulaBusqueda = recuperarTexto("txtBusquedaCedula");
+    
+    if (cedulaBusqueda === "") {
+        mostrarTexto("lblErrorBusqueda", "Ingrese una cédula para buscar");
+        return;
+    }
+    
+    let empleadoEncontrado = buscarEmpleado(cedulaBusqueda);
+    
+    if (empleadoEncontrado === null) {
+        alert("EMPLEADO NO EXISTE");
+    } else {
+        mostrarTextoEnCaja("txtCedula", empleadoEncontrado.cedula);
+        mostrarTextoEnCaja("txtNombre", empleadoEncontrado.nombre);
+        mostrarTextoEnCaja("txtApellido", empleadoEncontrado.apellido);
+        mostrarTextoEnCaja("txtSueldo", empleadoEncontrado.sueldo);
+        
+        habilitarComponente("txtNombre");
+        habilitarComponente("txtApellido");
+        habilitarComponente("txtSueldo");
+        habilitarComponente("btnGuardar");
+        
+        deshabilitarComponente("txtCedula");
+        
+        esNuevo = false;
+    }
+}
+
+// Funcion de validar
 limpiarMensajesError = function() {
     mostrarTexto("lblErrorCedula", "");
     mostrarTexto("lblErrorNombre", "");
