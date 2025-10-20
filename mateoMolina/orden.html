@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="utilitarios.js"></script>
+    <script src="orden.js"></script>
+    <link rel="stylesheet" href="orden.css">
+</head>
+<body onload="mostrarTablaPersonas()">
+    <h1>Sistema de Gestión de Personas</h1>
+    
+    <div class="container">
+        <div>
+            <label for="txtNombre">Ingrese el nombre:</label>
+            <input type="text" id="txtNombre">
+            <div id="lblErrorNombre" class="errores"></div>
+            
+            <label for="txtEdad">Ingrese la edad:</label>
+            <input type="text" id="txtEdad">
+            <div id="lblErrorEdad" class="errores"></div>
+            
+            <input type="button" value="GUARDAR" onclick="agregarPersona()">
+            <input type="button" value="Limpiar" onclick="limpiar()">
+            
+            <div class="botones-busqueda">
+                <input type="button" value="ENCONTRAR MAYOR" onclick="determinarMayor()" class="btn-mayor">
+                <input type="button" value="ENCONTRAR MENOR" onclick="determinarMenor()" class="btn-menor">
+            </div>
+        </div>
+        
+        <div class="result-section">
+            <h3>Lista de Personas:</h3>
+            <div id="tablaPersonas" class="tabla-container"></div>
+            
+            <div id="lblResultadoMayor" class="resultado-busqueda mayor"></div>
+            <div id="lblResultadoMenor" class="resultado-busqueda menor"></div>
+            
+            <div id="lblMensaje" class="mensaje"></div>
+        </div>
+    </div>
+</body>
+</html>

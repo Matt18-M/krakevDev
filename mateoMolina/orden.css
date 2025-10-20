@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}
+
+.result-section {
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.errores {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.mensaje {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.tabla-personas {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.tabla-personas th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+.tabla-personas td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+}
+
+.tabla-personas tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.botones-busqueda {
+    margin-top: 15px;
+}
+
+.btn-mayor {
+    background-color: #2196F3;
+}
+
+.btn-mayor:hover {
+    background-color: #0b7dda;
+}
+
+.btn-menor {
+    background-color: #ff9800;
+}
+
+.btn-menor:hover {
+    background-color: #e68900;
+}
+
+.resultado-busqueda {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.resultado-busqueda.mayor {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.resultado-busqueda.menor {
+    background-color: #fff3cd;
+    color: #856404;
+}
