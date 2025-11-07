@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen del Día</title>
+    <link rel="stylesheet" href="resumen.css">
+        <script src="utilitarios.js"></script>
+    <script src="resumen.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Resumen del Día</h1>
+            <p class="subtitle">Informe completo de asistencia y estadísticas</p>
+        </header>
+        
+        <div class="content">
+            <div class="summary-section">
+                <h2 class="section-title">Resumen General</h2>
+                
+                <div class="summary-card">
+                    <div class="summary-header">
+                        <h3>Información del Curso</h3>
+                        <button class="btn btn-generate" id="btnGenerarResumen">🔄 Generar Resumen</button>
+                    </div>
+                    
+                    <div class="course-summary" id="infoResumenCurso">
+                        <div class="empty-state">
+                            <p>📋 Haga clic en "Generar Resumen" para ver la información</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-large total-estudiantes">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="totalEstudiantes">0</div>
+                            <div class="stat-label">Total Estudiantes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-large presentes">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="totalPresentes">0</div>
+                            <div class="stat-label">Presentes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-large ausentes">
+                        <div class="stat-icon">❌</div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="totalAusentes">0</div>
+                            <div class="stat-label">Ausentes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-large porcentaje">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <div class="stat-number" id="porcentajeAsistencia">0%</div>
+                            <div class="stat-label">Asistencia</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <h3>Navegar a otros sistemas</h3>
+                    <div class="nav-buttons">
+                        <button class="btn-nav" onclick="window.location.href='estudiantes.html'">👥 Gestionar Estudiantes</button>
+                        <button class="btn-nav" onclick="window.location.href='curso.html'">🏫 Configurar Curso</button>
+                        <button class="btn-nav" onclick="window.location.href='asistencia.html'">📊 Tomar Asistencia</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="details-section">
+                <h2 class="section-title">Detalle de Asistencia</h2>
+                
+                <div class="details-card">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="presentes">Presentes</button>
+                        <button class="tab-btn" data-tab="ausentes">Ausentes</button>
+                        <button class="tab-btn" data-tab="todos">Todos</button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="tablaResumen">
+                            <div class="empty-state">
+                                <p>📋 Genere el resumen para ver los detalles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

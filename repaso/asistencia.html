@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control de Asistencia</title>
+    <link rel="stylesheet" href="asistencia.css">
+        <script src="utilitarios.js"></script>
+    <script src="asistencia.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Control de Asistencia</h1>
+            <p class="subtitle">Registro diario de asistencia de estudiantes</p>
+        </header>
+        
+        <div class="content">
+            <div class="form-section">
+                <h2 class="section-title">Registrar Asistencia</h2>
+                
+                <div class="success-message" id="successMessage">
+                    ¡Asistencia registrada correctamente!
+                </div>
+                
+                <div class="form-group">
+                    <label for="txtIdEstudiante">ID del estudiante:</label>
+                    <input type="text" id="txtIdEstudiante" placeholder="Ej: 1714616123">
+                    <div class="error-message" id="lblErrorId"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="selectEstado">Estado:</label>
+                    <select id="selectEstado" class="form-select">
+                        <option value="">Seleccione estado</option>
+                        <option value="Presente">Presente</option>
+                        <option value="Ausente">Ausente</option>
+                    </select>
+                    <div class="error-message" id="lblErrorEstado"></div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" id="btnRegistrar">Registrar Asistencia</button>
+                    <button class="btn btn-clear" id="btnLimpiar">Limpiar</button>
+                </div>
+
+                <div class="navigation">
+                    <h3>Navegar a otros sistemas</h3>
+                    <div class="nav-buttons">
+                        <button class="btn-nav" onclick="window.location.href='estudiantes.html'">👥 Gestionar Estudiantes</button>
+                        <button class="btn-nav" onclick="window.location.href='curso.html'">🏫 Configurar Curso</button>
+                        <button class="btn-nav" onclick="window.location.href='resumen.html'">📈 Ver Resumen</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="list-section">
+                <h2 class="section-title">Asistencia del Día</h2>
+                
+                <div class="stats">
+                    <div class="stat-card presente">
+                        <span class="stat-number" id="contadorPresentes">0</span>
+                        <span class="stat-label">Presentes</span>
+                    </div>
+                    <div class="stat-card ausente">
+                        <span class="stat-number" id="contadorAusentes">0</span>
+                        <span class="stat-label">Ausentes</span>
+                    </div>
+                    <div class="stat-card total">
+                        <span class="stat-number" id="contadorTotal">0</span>
+                        <span class="stat-label">Total</span>
+                    </div>
+                </div>
+                
+                <div class="student-list" id="tablaAsistencia">
+                    <!-- Aquí se mostrará la lista de asistencia -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

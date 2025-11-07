@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Estudiantes</title>
+    <link rel="stylesheet" href="estudiantes.css">
+     <script src="utilitarios.js"></script>
+    <script src="estudiantes.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Gestión de Estudiantes</h1>
+            <p class="subtitle">Administre la información de los estudiantes del curso</p>
+        </header>
+        
+        <div class="content">
+            <div class="form-section">
+                <h2 class="section-title">Formulario de Estudiante</h2>
+                
+                <div class="success-message" id="successMessage">
+                    ¡Estudiante guardado exitosamente!
+                </div>
+                
+                <div class="form-group">
+                    <label for="txtNombre">Nombre completo:</label>
+                    <input type="text" id="txtNombre" placeholder="Ej: Ana López">
+                    <div class="error-message" id="lblErrorNombre"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="txtCorreo">Correo electrónico:</label>
+                    <input type="email" id="txtCorreo" placeholder="Ej: ana.lopez@correo.com">
+                    <div class="error-message" id="lblErrorCorreo"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="txtId">ID del estudiante:</label>
+                    <input type="text" id="txtId" placeholder="Ej: 123456789">
+                    <div class="error-message" id="lblErrorId"></div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="btn btn-primary" id="btnNuevo">Nuevo</button>
+                    <button class="btn btn-secondary" id="btnGuardar">Guardar</button>
+                    <button class="btn btn-clear" id="btnLimpiar">Limpiar</button>
+                </div>
+                
+                <div class="search-group">
+                    <h3>Buscar Estudiante</h3>
+                    <div class="search-input">
+                        <input type="text" id="txtBusquedaId" placeholder="Ingrese ID para buscar">
+                        <button class="btn btn-search" id="btnBuscar">Buscar</button>
+                    </div>
+                    <div class="error-message" id="lblErrorBusqueda"></div>
+                </div>
+
+                <div class="delete-group">
+                    <h3>Eliminar Estudiante</h3>
+                    <div class="search-input">
+                        <input type="text" id="txtEliminarId" placeholder="Ingrese ID para eliminar">
+                        <button class="btn btn-delete" id="btnEliminar">Eliminar</button>
+                    </div>
+                    <div class="error-message" id="lblErrorEliminar"></div>
+                </div>
+
+                <div class="navigation">
+                    <h3>Navegar a otros sistemas</h3>
+                    <div class="nav-buttons">
+                        <button class="btn-nav" onclick="window.location.href='curso.html'">🏫 Configurar Curso</button>
+                        <button class="btn-nav" onclick="window.location.href='asistencia.html'">📊 Tomar Asistencia</button>
+                        <button class="btn-nav" onclick="window.location.href='resumen.html'">📈 Ver Resumen</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="list-section">
+                <h2 class="section-title">Lista de Estudiantes Registrados</h2>
+                
+                <div class="student-list" id="tablaEstudiantes">
+                    <!-- Aquí se mostrarán los estudiantes -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
