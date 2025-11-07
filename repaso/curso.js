@@ -4,31 +4,6 @@ let curso = {
     docente: "Dr. Roberto Silva" 
 };
 
-// Cargar datos guardados al iniciar
-// CARGA DE DATOS
-function cargarDatos() {
-    // Cargar estudiantes (solo si no hay datos en localStorage)
-    let estudiantesGuardados = cargarDeLocalStorage('estudiantes');
-    if (estudiantesGuardados && estudiantesGuardados.length > 0) {
-        estudiantes = estudiantesGuardados;
-    }
-    
-    // Cargar asistencias
-    let asistenciasGuardadas = cargarDeLocalStorage('asistencias');
-    if (asistenciasGuardadas) asistencias = asistenciasGuardadas;
-    
-    // Cargar curso
-    let cursoGuardado = cargarDeLocalStorage('cursoConfig');
-    if (cursoGuardado && cursoGuardado.nombre) {
-        curso = cursoGuardado;
-    }
-    
-    // Actualizar vistas
-    mostrarEstudiantes();
-    mostrarAsistencias();
-    mostrarInformacionCurso();
-}
-
 // Guardar datos
 function guardarDatos() {
     const nombreCurso = document.getElementById('txtCurso').value;
@@ -48,9 +23,6 @@ function guardarDatos() {
     // Guardar datos
     curso.nombre = nombreCurso;
     curso.docente = nombreDocente;
-    
-    // Guardar en localStorage
-    localStorage.setItem('cursoConfig', JSON.stringify(curso));
     
     // Mostrar mensaje de éxito
     mostrarMensajeExito();
@@ -90,7 +62,7 @@ function mostrarInformacion() {
 
 // Mostrar mensaje de éxito temporal
 function mostrarMensajeExito() {
-    const mensaje = document.getElementById("successMessage");
+    const mensaje = document.getElementById("successMessageCurso");
     mensaje.style.display = 'block';
     
     setTimeout(() => {
@@ -104,11 +76,11 @@ function limpiarMensajesError() {
 }
 
 // Inicializar la aplicación
-function inicializar() {
-    cargarDatos();
+function inicializarCurso() {
+    mostrarInformacion();
     
     // Configurar evento del botón guardar
-    document.getElementById('btnGuardar').addEventListener('click', guardarDatos);
+    document.getElementById('btnGuardarCurso').addEventListener('click', guardarDatos);
     
     // Permitir guardar con Enter
     document.addEventListener('keypress', function(event) {
@@ -117,6 +89,3 @@ function inicializar() {
         }
     });
 }
-
-// Iniciar cuando se cargue la página
-document.addEventListener('DOMContentLoaded', inicializar);

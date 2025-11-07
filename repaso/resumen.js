@@ -2,9 +2,9 @@
 
 generarResumen = function(){
     // Cargar datos del curso
-    let curso = cargarCurso();
-    let estudiantes = cargarEstudiantes();
-    let asistencias = cargarAsistencias();
+    let estudiantes = window.estudiantes || [];
+    let asistencias = window.asistencias || [];
+    let curso = window.curso || { nombre: "", docente: "" };
     
     if (!curso.nombre || !curso.docente) {
         alert("Primero debe configurar los datos del curso");
@@ -60,14 +60,13 @@ mostrarDetallesAsistencia = function(estudiantes, asistencias) {
         tablaDiv.innerHTML = `
             <div class="empty-state">
                 <p>📊 No hay asistencias registradas hoy</p>
-                <p>Registre la asistencia en el sistema correspondiente</p>
             </div>
         `;
         return;
     }
     
     let contenidoTabla = `
-        <table class='tabla-estilo'>
+        <table>
             <tr>
                 <th>ID</th>
                 <th>NOMBRE</th>
@@ -93,31 +92,6 @@ mostrarDetallesAsistencia = function(estudiantes, asistencias) {
     }
     contenidoTabla += "</table>";
     tablaDiv.innerHTML = contenidoTabla;
-}
-
-// FUNCIONES DE CARGA DE DATOS
-cargarCurso = function() {
-    let cursoGuardado = localStorage.getItem('cursoConfig');
-    if (cursoGuardado) {
-        return JSON.parse(cursoGuardado);
-    }
-    return { nombre: "", docente: "" };
-}
-
-cargarEstudiantes = function() {
-    let estudiantesGuardados = localStorage.getItem('estudiantes');
-    if (estudiantesGuardados) {
-        return JSON.parse(estudiantesGuardados);
-    }
-    return [];
-}
-
-cargarAsistencias = function() {
-    let asistenciasGuardadas = localStorage.getItem('asistencias');
-    if (asistenciasGuardadas) {
-        return JSON.parse(asistenciasGuardadas);
-    }
-    return [];
 }
 
 // FUNCIONES DE TABS
@@ -148,5 +122,3 @@ inicializarResumen = function() {
     document.getElementById("btnGenerarResumen").addEventListener("click", generarResumen);
     inicializarTabs();
 }
-
-window.onload = inicializarResumen;

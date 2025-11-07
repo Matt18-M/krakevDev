@@ -6,6 +6,7 @@ let asistencias = [
     { id: "1001001004", nombre: "José Martínez", estado: "Presente" },
     { id: "1001001005", nombre: "Laura González", estado: "Presente" }
 ];
+
 // FUNCIONES PRINCIPALES
 
 mostrarAsistencias = function(){
@@ -13,9 +14,8 @@ mostrarAsistencias = function(){
     
     if (asistencias.length === 0) {
         cmpTabla.innerHTML = `
-            <div class="empty-message">
-                <p>📊 No hay asistencias registradas hoy</p>
-                <p>Comience registrando la asistencia de un estudiante</p>
+            <div class="empty-state">
+                <p>📋 No hay asistencias registradas hoy</p>
             </div>
         `;
         actualizarContadores();
@@ -23,7 +23,7 @@ mostrarAsistencias = function(){
     }
     
     let contenidoTabla = `
-        <table class='tabla-estilo'>
+        <table>
             <tr>
                 <th>ID</th>
                 <th>NOMBRE</th>
@@ -69,11 +69,10 @@ registrarAsistencia = function(){
     
     if (validacionCorrecta) {
         // Cargar estudiantes desde el sistema principal
-        let estudiantes = cargarEstudiantes();
-        let estudianteEncontrado = buscarEstudiante(idEstudiante, estudiantes);
+        let estudianteEncontrado = buscarEstudiante(idEstudiante);
         
         if (estudianteEncontrado === null) {
-            mostrarTexto("lblErrorId", "No existe un estudiante con este ID");
+            mostrarTexto("lblErrorIdAsistencia", "No existe un estudiante con este ID");
             return;
         }
         
@@ -97,7 +96,6 @@ registrarAsistencia = function(){
         
         mostrarAsistencias();
         limpiarFormularioAsistencia();
-        guardarAsistencias();
     }
 }
 
@@ -110,7 +108,7 @@ buscarAsistencia = function(id) {
     return null;
 }
 
-buscarEstudiante = function(id, estudiantes) {
+buscarEstudiante = function(id) {
     for (let i = 0; i < estudiantes.length; i++) {
         if (estudiantes[i].id === id) {
             return estudiantes[i];
@@ -119,19 +117,11 @@ buscarEstudiante = function(id, estudiantes) {
     return null;
 }
 
-cargarEstudiantes = function() {
-    let estudiantesGuardados = localStorage.getItem('estudiantes');
-    if (estudiantesGuardados) {
-        return JSON.parse(estudiantesGuardados);
-    }
-    return [];
-}
-
 validarCamposAsistencia = function(id, estado) {
     let validacionCorrecta = true;
     
     if (id === "") {
-        mostrarTexto("lblErrorId", "El ID es obligatorio");
+        mostrarTexto("lblErrorIdAsistencia", "El ID es obligatorio");
         validacionCorrecta = false;
     }
     
@@ -150,12 +140,12 @@ limpiarFormularioAsistencia = function() {
 }
 
 limpiarMensajesError = function() {
-    mostrarTexto("lblErrorId", "");
+    mostrarTexto("lblErrorIdAsistencia", "");
     mostrarTexto("lblErrorEstado", "");
 }
 
 mostrarMensajeExito = function(mensaje) {
-    let successMessage = document.getElementById("successMessage");
+    let successMessage = document.getElementById("successMessageAsistencia");
     successMessage.textContent = mensaje;
     successMessage.style.display = "block";
     
@@ -164,25 +154,12 @@ mostrarMensajeExito = function(mensaje) {
     }, 3000);
 }
 
-// LOCAL STORAGE
-guardarAsistencias = function() {
-    localStorage.setItem('asistencias', JSON.stringify(asistencias));
-}
-
-cargarAsistencias = function() {
-    let asistenciasGuardadas = localStorage.getItem('asistencias');
-    if (asistenciasGuardadas) {
-        asistencias = JSON.parse(asistenciasGuardadas);
-        mostrarAsistencias();
-    }
-}
-
 // INICIALIZACIÓN
 inicializarAsistencia = function() {
-    cargarAsistencias();
+    mostrarAsistencias();
     
     document.getElementById("btnRegistrar").addEventListener("click", registrarAsistencia);
-    document.getElementById("btnLimpiar").addEventListener("click", limpiarFormularioAsistencia);
+    document.getElementById("btnLimpiarAsistencia").addEventListener("click", limpiarFormularioAsistencia);
     
     document.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
@@ -190,5 +167,3 @@ inicializarAsistencia = function() {
         }
     });
 }
-
-window.onload = inicializarAsistencia;

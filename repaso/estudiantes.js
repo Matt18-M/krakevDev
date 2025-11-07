@@ -12,7 +12,6 @@ let estudiantes = [
     { id: "1001001010", nombre: "Pedro Castro", correo: "pedro.castro@correo.com" }
 ];
 
-
 // FUNCIONES PRINCIPALES
 
 mostrarEstudiantes = function(){
@@ -20,29 +19,33 @@ mostrarEstudiantes = function(){
     
     if (estudiantes.length === 0) {
         cmpTabla.innerHTML = `
-            <div class="empty-message">
-                <p>No hay estudiantes registrados.</p>
-                <p>Agregue el primero usando el formulario.</p>
+            <div class="empty-state">
+                <p>📋 No hay estudiantes registrados</p>
             </div>
         `;
         return;
     }
     
-    let contenidoTabla = "<table class='tabla-estilo'><tr>" +
-        "<th>ID</th>" +
-        "<th>NOMBRE</th>" +
-        "<th>CORREO</th>" +
-        "</tr>";
+    let contenidoTabla = `
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>CORREO</th>
+            </tr>
+    `;
     
     for (let i = 0; i < estudiantes.length; i++){
         let elementoEstudiante = estudiantes[i];
-        contenidoTabla +=
-            "<tr><td>" + elementoEstudiante.id + "</td>" +
-            "<td>" + elementoEstudiante.nombre + "</td>" +
-            "<td>" + elementoEstudiante.correo + "</td>" +
-            "</tr>"
+        contenidoTabla += `
+            <tr>
+                <td>${elementoEstudiante.id}</td>
+                <td>${elementoEstudiante.nombre}</td>
+                <td>${elementoEstudiante.correo}</td>
+            </tr>
+        `;
     }
-    contenidoTabla += "</table>"
+    contenidoTabla += "</table>";
     cmpTabla.innerHTML = contenidoTabla;
 }
 
@@ -50,7 +53,7 @@ deshabilitarCamposFormulario = function () {
     deshabilitarComponente("txtNombre");
     deshabilitarComponente("txtCorreo");
     deshabilitarComponente("txtId");
-    deshabilitarComponente("btnGuardar");
+    deshabilitarComponente("btnGuardarEstudiante");
 }
 
 ejecutarNuevo = function () {
@@ -58,7 +61,7 @@ ejecutarNuevo = function () {
     habilitarComponente("txtNombre");
     habilitarComponente("txtCorreo");
     habilitarComponente("txtId");
-    habilitarComponente("btnGuardar");
+    habilitarComponente("btnGuardarEstudiante");
     mostrarTextoEnCaja("txtId", "");
     mostrarTextoEnCaja("txtNombre", "");
     mostrarTextoEnCaja("txtCorreo", "");
@@ -113,7 +116,6 @@ eliminarEstudiante = function() {
     mostrarEstudiantes();
     alert("Estudiante eliminado correctamente.");
     mostrarTextoEnCaja("txtEliminarId", "");
-    guardarEstudiantes();
 }
 
 // GUARDADO Y VALIDACIÓN
@@ -133,11 +135,10 @@ guardar = function(){
             let resultado = agregarEstudiante(nuevoEstudiante);
             
             if (resultado) {
-                mostrarMensajeExito("ESTUDIANTE GUARDADO CORRECTAMENTE");
+                mostrarMensajeExito("¡Estudiante guardado exitosamente!");
                 mostrarEstudiantes();
                 deshabilitarCamposFormulario();
                 esNuevo = false; 
-                guardarEstudiantes();
             } else {
                 alert("YA EXISTE UN ESTUDIANTE CON EL ID " + id);
             }
@@ -146,10 +147,9 @@ guardar = function(){
             if (estudianteExistente !== null) {
                 estudianteExistente.nombre = nombre;
                 estudianteExistente.correo = correo;
-                mostrarMensajeExito("ESTUDIANTE MODIFICADO EXITOSAMENTE");
+                mostrarMensajeExito("¡Estudiante modificado exitosamente!");
                 mostrarEstudiantes(); 
                 deshabilitarCamposFormulario(); 
-                guardarEstudiantes();
             }
         }
     }
@@ -186,7 +186,7 @@ ejecutarBusqueda = function() {
         
         habilitarComponente("txtNombre");
         habilitarComponente("txtCorreo");
-        habilitarComponente("btnGuardar");
+        habilitarComponente("btnGuardarEstudiante");
         deshabilitarComponente("txtId");
         esNuevo = false;
     }
@@ -237,7 +237,7 @@ validarCampos = function(id, nombre, correo) {
 }
 
 mostrarMensajeExito = function(mensaje) {
-    let successMessage = document.getElementById("successMessage");
+    let successMessage = document.getElementById("successMessageEstudiantes");
     successMessage.textContent = mensaje;
     successMessage.style.display = "block";
     
@@ -246,29 +246,14 @@ mostrarMensajeExito = function(mensaje) {
     }, 3000);
 }
 
-// LOCAL STORAGE
-guardarEstudiantes = function() {
-    localStorage.setItem('estudiantes', JSON.stringify(estudiantes));
-}
-
-cargarEstudiantes = function() {
-    let estudiantesGuardados = localStorage.getItem('estudiantes');
-    if (estudiantesGuardados) {
-        estudiantes = JSON.parse(estudiantesGuardados);
-        mostrarEstudiantes();
-    }
-}
-
 // INICIALIZACIÓN
-inicializar = function() {
-    cargarEstudiantes();
+inicializarEstudiantes = function() {
+    mostrarEstudiantes();
     deshabilitarCamposFormulario();
     
     document.getElementById("btnNuevo").addEventListener("click", ejecutarNuevo);
-    document.getElementById("btnGuardar").addEventListener("click", guardar);
-    document.getElementById("btnLimpiar").addEventListener("click", limpiar);
+    document.getElementById("btnGuardarEstudiante").addEventListener("click", guardar);
+    document.getElementById("btnLimpiarEstudiante").addEventListener("click", limpiar);
     document.getElementById("btnBuscar").addEventListener("click", ejecutarBusqueda);
     document.getElementById("btnEliminar").addEventListener("click", eliminarEstudiante);
 }
-
-window.onload = inicializar;
